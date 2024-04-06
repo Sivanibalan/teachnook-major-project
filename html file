@@ -1,0 +1,22 @@
+const opensea = require('opensea-js');
+
+const provider = new opensea.OpenSeaPort.DefaultProvider({networkName: opensea.Network.Main});
+
+const seaport = new opensea.OpenSeaPort(provider, {
+  networkName: opensea.Network.Main,
+});
+
+const walletAddress = 'YOUR_WALLET_ADDRESS';
+const asset = {
+  tokenId: 'TOKEN_ID',
+  tokenAddress: 'TOKEN_ADDRESS',
+  schemaName: opensea.types.NFTVersion.ERC721,
+};
+
+seaport.createOrder({
+  assets: [asset],
+  accountAddress: walletAddress,
+  startAmount: 0,
+});
+
+console.log('NFT minted successfully!');
